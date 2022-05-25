@@ -1,0 +1,187 @@
+﻿@model IEnumerable<Clinic_Main.Models.Appointment>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<head>
+    <style>
+        #customers {
+            border-collapse: collapse;
+            width: 100%;
+            background-color: #A8BAC1;
+        }
+
+            #customers td, #customers th {
+                padding: 8px;
+            }
+
+            #customers th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #A8BAC1;
+                color: white;
+            }
+
+        body {
+            background-color: #EFF2F4;
+        }
+
+        .topnav {
+            background-color: #32ABD0;
+            overflow: hidden;
+        }
+            .topnav a {
+                float: left;
+                color: white;
+                text-align: left;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+            }
+
+            .topnav a:hover {
+                background-color: #A8BAC1;
+                color: black;
+            }
+
+            .topnav a.active {
+                background-color: #57C1BC;
+                color: white;
+            }
+    </style>
+</head>
+<div><center><h5 style="color:#A8BAC1"><img src="~/Images/Stone-Clinic-Logo.png" width="40" height="40" />&nbsp;Stone<i style="color:#58C1BC">Clinic</i></h5></center></div>
+<body>
+    <div>
+        <center>
+            <h6 style="color:black"><a asp-action="viewuser" asp-controller="Home" method="post"><img src="~/Images/user.png" width="20" height="20" /> Admin  </a> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a asp-action="Login" asp-controller="Home" method="post"><img src="~/Images/changes.png" width="20" height="20" />&nbsp;Switch user</a></h6>
+        </center>
+    </div>
+</body>
+<body style="background-color: #EFF2F4">
+    <div class="topnav">
+        <div style="text-align:left">
+            <a class="active" asp-action="Home" asp-controller="Home" method="post">Home</a>
+            <a asp-action="AddDoctor" asp-controller="Home" method="post">Adddoctor</a>
+            <a asp-action="AddPatient" asp-controller="Home" method="post">AddPatient</a>
+            <a asp-action="DoctList" asp-controller="Home" method="post">Docter List</a>
+            <a asp-action="ScheduleAppoint" asp-controller="Home" method="post">Schedule Appointment</a>
+            <a class="active" asp-action="CancelAppoint" asp-controller="Home" method="post">Cancel Appointment</a>
+            <a asp-action="Login" asp-controller="Home" method="post">Log Out</a>
+        </div>
+    </div>
+</body>
+<br />
+<br />
+<h5 style="color:#DA0037"><b style="font-family:Arial, Helvetica, sans-serif ">Enter the Cancel Appointment :</b></h5>
+<br />
+<div>
+    <table id="customers">
+        <tr>
+            <th>@Html.DisplayName("AppointID")</th>
+            <th>@Html.DisplayName("patientID")</th>
+            <th>@Html.DisplayName("patientName")</th>
+            <th>@Html.DisplayName("Specializations")</th>
+            <th>@Html.DisplayName("DoctorName")</th>
+            <th>@Html.DisplayName("VisitDate")</th>
+            <th>@Html.DisplayName("AppointmentTime")</th>
+        </tr>
+</div>
+<div class="alert-light">
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelitem => item.AppointID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelitem => item.PatientID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelitem => item.PatientName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelitem => item.Specialization)
+        </td>
+        <td>
+            @Html.DisplayFor(modelitem => item.DoctorList)
+        </td>
+        <td>
+
+            @Html.DisplayFor(modelitem => item.VisitDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelitem => item.AppointmenTime)
+        </td>
+        <!--<td >-->
+        @*@using (Html.BeginForm("Deleting", "Home", FormMethod.Post))*@
+        <!--{
+
+            <input type="submit" value="Cancel Appointment"  asp-route-id="@item.AppointID" style="background-color: #91a5b7"/>
+        }
+    </td>-->
+        <td>
+            <a asp-action="Deleting" asp-controller="Home" asp-route-id="@item.AppointID" class="btn btn-danger" style="background-color:deepskyblue;color:white">Cancel Appointment</a>
+
+        </td>
+    </tr>
+    }
+    </table>
+</div>
+
+@*<h2 style="color:cadetblue">Cancel AppointMent :</h2>
+    <div class="alert-dark">
+        <table class="table">
+            @using (Html.BeginForm("AddPatientList", "Home", FormMethod.Post))
+            {
+                <tr>
+                    <th>
+                        @Html.DisplayName("PatientID")
+                    </th>
+                    <td>
+                        @Html.TextBoxFor(modelItem => Model.patientID)
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        @Html.DisplayName("Specialization")
+                    </th>
+                    <td>
+                        @Html.TextBoxFor(modelItem => Model.Specialization)
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        @Html.DisplayName("DoctorList")
+                    </th>
+                    <td>
+                        @Html.TextBoxFor(modelItem => Model.DoctorList)
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        @Html.DisplayName("Date")
+                    </th>
+                    <td>
+                        @Html.TextBoxFor(modelItem => Model.VisitDate)
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        @Html.DisplayName("AppointmentTime")
+                    </th>
+                    <td>
+                        @Html.TextBoxFor(modelItem => Model.AppointmenTime)
+                    </td>
+                </tr>
+                <tbody>
+                    <tr>
+                        <td>
+
+                            <center>  <input type="submit" value="Create" /></center>
+                        </td>
+                    </tr>
+                </tbody>
+            }
+        </table>
+    </div>*@

@@ -1,0 +1,172 @@
+﻿@model Clinic_Main.Models.Patient
+
+@{
+    ViewData["Title"] = "AddPatient";
+}
+<head>
+    <style>
+        #customers {
+            border-collapse: collapse;
+            width: 100%;
+            background-color: #A8BAC1;
+        }
+
+            #customers td, #customers th {
+                padding: 8px;
+            }
+
+            #customers th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #A8BAC1;
+                color: white;
+            }
+
+        body {
+            background-color: #EFF2F4;
+        }
+
+        .topnav {
+            background-color: #32ABD0;
+            overflow: hidden;
+        }
+            .topnav a {
+                float: left;
+                color: white;
+                text-align: left;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+            }
+
+            .topnav a:hover {
+                background-color: #A8BAC1;
+                color: black;
+            }
+
+            /* Add a color to the active/current link */
+            .topnav a.active {
+                background-color: #57C1BC;
+                color: white;
+            }
+    </style>
+</head>
+<div><center><h5 style="color:#A8BAC1"><img src="~/Images/Stone-Clinic-Logo.png" width="40" height="40" />&nbsp;Stone<i style="color:#58C1BC">Clinic</i></h5></center></div>
+<body>
+    <div>
+        <center>
+            <h6 style="color:black"><a asp-action="viewuser" asp-controller="Home" method="post"><img src="~/Images/user.png" width="20" height="20" /> Admin  </a> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a asp-action="Login" asp-controller="Home" method="post"><img src="~/Images/changes.png" width="20" height="20" />&nbsp;Switch user</a></h6>
+        </center>
+        @*<center><h1 class="m-0 text-secondary"><span class="text-dark">Stone</span>Clininc</h1></center>*@
+    </div>
+</body>
+<body style="background-color: #EFF2F4">
+    <div class="topnav">
+        <div style="text-align:left">
+            <a asp-action="Home" asp-controller="Home" method="post">Home</a>
+            <a asp-action="AddDoctor" asp-controller="Home" method="post">Adddoctor</a>
+            <a class="active" asp-action="AddPatient" asp-controller="Home" method="post">AddPatient</a>
+            <a asp-action="DoctList" asp-controller="Home" method="post">Docter List</a>
+            <a asp-action="ScheduleAppoint" asp-controller="Home" method="post">Schedule Appointment</a>
+            <a asp-action="CancelAppoint" asp-controller="Home" method="post">Cancel Appointment</a>
+            <a asp-action="Login" asp-controller="Home" method="post">Log Out</a>
+        </div>
+    </div>
+</body>
+<br />
+
+<br />
+<h5 style="color:#DA0037"> To View Patient Details: ==> <a asp-action="patlist" asp-controller="Home" method="post" style="border:hidden">To view</a></h5>
+
+<br />
+<h5 style="color:#DA0037"><b style="font-family:Arial, Helvetica, sans-serif ">Enter the Patient Details :</b></h5>
+<br />
+
+
+<div>
+    <table id="customers">
+        @using (Html.BeginForm("AddPatientList", "Home", FormMethod.Post))
+        {
+            <tr>
+                <th>
+                    @Html.DisplayName("First Name")
+                </th>
+                <td>
+                    @Html.TextBoxFor(modelItem => Model.FirstName, new { required = "required" })
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayName("Last Name")
+                </th>
+                <td>
+                    @Html.TextBoxFor(modelItem => Model.LastName, new { required = "required" })
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayName("Sex")
+                </th>
+                <td>
+                    <select name="Sex">
+                        <option value="Gender" selected disabled>Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Others">Others</option>
+                    </select>
+                </td>
+            </tr>
+            @*<tr>
+                    <th>
+                        @Html.DisplayName("Sex")
+                    </th>
+                    <td>
+                        @Html.TextBoxFor(modelItem => Model.Sex)
+                    </td>
+                </tr>*@
+            <tr>
+                <th>
+                    @Html.DisplayName("Age")
+                </th>
+                <td>
+                    @Html.TextBoxFor(modelItem => Model.Age, new { required = "required" })
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayName("DOB")
+                </th>
+                <td>
+                    &nbsp;&nbsp;<input asp-for="DOB" type="date" required />
+                    <span asp-validation-for="DOB" class="text-danger"></span>
+                    @*@Html.TextBoxFor(modelItem => Model.DOB)*@
+                </td>
+            </tr>
+            <tbody>
+                <tr>
+                    <td>
+
+                        <input type="submit" value="Create" style="background-color: #32ABD0" />
+                    </td>
+                </tr>
+            </tbody>
+        }
+    </table>
+</div>
+<footer>
+    <hr style="color:darkslategrey" />
+    <center>
+        <h1></h1>
+        <div class="soical-icons">
+
+            <a href="https://www.instagram.com/_n__14._/"><i class="fa fa-facebook-square  fa-6"><img src="~/Images/insta.png" width="30" height="30" /></i></a>
+            <a href="#"><i class="fa fa-google-plus-square fa-6"><img src="~/Images/fb.png" width="30" height="30" /></i></a>
+            <a href="#"><i class="fa fa-twitter-square fa-6"><img src="~/Images/tw.png" width="30" height="30" /></i></a>
+        </div>
+    </center>
+    <br />
+    <div style="background-color:black" class="gap">
+        <center><h6 style="color:whitesmoke">&copy;Copyright 2022.All Rights Reserved &nbsp; &nbsp;|&nbsp;&nbsp;<span style="color:red">Stone Clinic</span></h6></center>
+    </div>
+</footer>

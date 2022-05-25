@@ -1,0 +1,178 @@
+﻿@model Clinic_Main.Models.Appointment
+@{
+}
+<head>
+    <link href="~/css/site.css" rel="stylesheet" />
+</head>
+<style>
+    .topnav {
+        background-color: #32ABD0;
+        overflow: hidden;
+    }
+        .topnav a {
+            float: left;
+            color: white;
+            text-align: left;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+    .topnav a:hover {
+        background-color: #A8BAC1;
+        color: black;
+    }
+
+
+    /* Add a color to the active/current link */
+    .topnav a.active {
+        background-color: #57C1BC;
+        color: white;
+    }
+</style>
+
+<div><center><h5 style="color:#A8BAC1"><img src="~/Images/Stone-Clinic-Logo.png" width="40" height="40" />&nbsp;Stone<i style="color:#58C1BC">Clinic</i></h5></center></div>
+<body>
+    <div>
+        <center>
+            <h6 style="color:black"><a asp-action="viewuser" asp-controller="Home" method="post"><img src="~/Images/user.png" width="20" height="20" /> Admin  </a> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a asp-action="Login" asp-controller="Home" method="post"><img src="~/Images/changes.png" width="20" height="20" />&nbsp;Switch user</a></h6>
+        </center>
+            @*<center><h1 class="m-0 text-secondary"><span class="text-dark">Stone</span>Clininc</h1></center>*@
+    </div> 
+</body>
+<body style="background-color: #EFF2F4">
+    <div class="topnav">
+        <div style="text-align:left">
+            <a class="active" asp-action="Home" asp-controller="Home" method="post">Home</a>
+            <a asp-action="AddDoctor" asp-controller="Home" method="post">Adddoctor</a>
+            <a asp-action="AddPatient" asp-controller="Home" method="post">AddPatient</a>
+            <a asp-action="DoctList" asp-controller="Home" method="post">Docter List</a>
+            <a asp-action="ScheduleAppoint" asp-controller="Home" method="post">Schedule Appointment</a>
+            <a asp-action="CancelAppoint" asp-controller="Home" method="post">Cancel Appointment</a>
+            <a asp-action="Login" asp-controller="Home" method="post">Log Out</a>
+        </div>
+    </div>
+</body>
+<br />
+<br />
+<body style="background-image: url()">
+    <center><img src="~/Images/doc1.jpg" width="500" height="350" /></center>
+    <br />
+    <center><h3 style="color:#32ABD0"><b>&nbsp;Safety Measures in the Hospital</b></h3></center>
+    <br />
+    <div style="background-color:#A8BAC1">
+        <br />
+
+        <h4>&nbsp; CONTROLS AND SAFETY :</h4>
+        <p>
+            <ul>
+                Ask your nurse how to use the controls. Never try to lower the bed's side rails or climb over them. Keep your top two side rails up at all times. Ask for help to get out of bed and wear slippers or shoes with non-skid soles. Never use a bedside table or over bed stand for support; they may move. Be very careful in the bathroom; move slowly and use the grab bar. Don't hesitate to call for help. Falls are the most common source of patient injuries, especially falls from or near the bed. Your physician will order activity based on your condition. Please check with your nurse before getting out of bed or sitting. Use your nurse call button to get help.
+            </ul>
+        </p>
+        <h4>&nbsp; DENTURES AND EYEGLASSES  :</h4>
+        <p><ul>Dentures and eyeglasses should be stored in the drawer of your bedside table. You are responsible for any personal items you bring to the hospital.</ul> </p>
+
+        <h4>&nbsp;PRESCRIPTION DRUGSAND HERBAL SUPPLEMENTS :</h4>
+        <p>
+            <ul>
+                If you were taking prescription drugs before your hospitalization and brought them with you, please show them to your nurse so he/she can record the information, and tell the doctor about your current prescriptions. Send your medications home with your family or friends after the nurse has reviewed them with you. Your physician will order the medications you need in the hospital, and our staff will give them to you.
+
+                If you have been taking any herbal products or dietary supplements, they may interact with medications your doctor may prescribe while you are in the hospital and when you go home. Let your physician and nurse know of any products you were taking at home.
+            </ul>
+        </p>
+        <h4>&nbsp; SPECIALISED SERVICES :</h4>
+        <p>
+            <ol>
+                <li> Joint Reconstruction & Sports Surgery for the Hip & Knee</li>
+                <li> Joint Replacement Surgery including Total Hip Replacement, Total & Partial Knee Replacement</li>
+                <li> Arthroscopic Key-Hole Surgery</li>
+                <li> Arthroscopic Ligament Reconstruction of the Knee</li>
+                <li> Minimally Invasive Techniques & Computer Aided Surgery</li>
+            </ol>
+        </p>
+        <h4>
+            &nbsp;&nbsp;
+            <i>
+                <b>
+                    Why Choose
+                    Stone Clinic?
+                </b>
+            </i>
+        </h4>
+        <p>
+            <ul>
+                Established by Dr Prathap C Reddy in 1983, Apollo Healthcare has a robust presence across the healthcare ecosystem. From routine wellness & preventive health care to innovative life-saving treatments and diagnostic services, Apollo Hospitals has touched more than 120 million lives from over 120 countries, offering the best clinical outcomes.
+            </ul>
+
+        </p>
+        <br />
+    </div>
+</body>
+<footer>
+    <hr style="color:darkslategrey" />
+    <center>
+        <h1></h1>
+        <div class="soical-icons">
+
+            <a href="https://www.instagram.com/_n__14._/"><i class="fa fa-facebook-square  fa-6"><img src="~/Images/insta.png" width="30" height="30" /></i></a>
+            <a href="#"><i class="fa fa-google-plus-square fa-6"><img src="~/Images/fb.png" width="30" height="30" /></i></a>
+            <a href="#"><i class="fa fa-twitter-square fa-6"><img src="~/Images/tw.png" width="30" height="30" /></i></a>
+        </div>
+    </center>
+    <br />
+    <div style="background-color:black" class="gap">
+        <center><h6 style="color:whitesmoke">&copy;Copyright 2022.All Rights Reserved &nbsp; &nbsp;|&nbsp;&nbsp;<span style="color:red">Stone Clinic</span></h6></center>
+    </div>
+</footer>
+@*<center>
+        <body style="background-image: url('')">
+            <div style="background-color:lightslategrey">
+                <table class="table">
+                    <thead style="border:double">
+
+                        <tr>
+                            <td style="border-collapse:collapse">
+                                @using (Html.BeginForm("AddDoctor", "Home", FormMethod.Post))
+                                {
+                                     <input type="submit" value="Add doctor">
+                                }
+                            </td>
+                        <tr>
+                        <tr>
+                            <td>
+                                @using (Html.BeginForm("AddPatient", "Home", FormMethod.Post))
+                                {
+
+                                     <input type="submit" value="Add Patient" />
+                                }
+                            </td>
+                        <tr />
+                        <tr>
+                            <td>
+                                @using (Html.BeginForm("ScheduleAppoint", "Home", FormMethod.Post))
+                                {
+                                    <label>3.</label> <input type="Submit" value="Schedule Appoitment" />
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @using (Html.BeginForm("CancelAppoint", "Home", FormMethod.Post))
+                                {
+                                     <input type="Submit" value="Cancel Appoitment" />
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+                                {
+                                     <input type="Submit" value="Logout" />
+                                }
+                            </td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </body>
+    </center>*@
+

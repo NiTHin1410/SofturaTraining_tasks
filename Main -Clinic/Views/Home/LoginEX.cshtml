@@ -1,0 +1,53 @@
+﻿@model Clinic_Main.Models.Login
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<head>
+    <link href="~/css/StyleSheet.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/css/new.css" rel="stylesheet" />
+</head>
+@*<body style="background-image: url('https://wallpapercave.com/wp/wp2528637.jpg') ">*@
+    <body style="background-image: url('https://wallpapers-hub.art/wallpaper-images/279608.jpg') ">
+   
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <center> <img src="~/Images/Stone-Clinic-Logo.png" width="60" height="60"></center>
+    <br />
+    @*<center><h5 style="color: #5a6c90 "><b><i>Stone<mark>Clinic </mark></i>&trade;</b></h5></center>*@
+
+        <form class="" asp-action="Verify" asp-controller="Home" method="post">
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-4">
+                  
+                        <div class="form-group">
+                            <input type="text" asp-for="UserName" class="form-control" placeholder="Username" required>
+                            <span asp-validation-for="UserName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input id="password-field" asp-for="Password" type="password" class="form-control" placeholder="Password" required>
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                            <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                        </div>
+                        <br />
+                        <div class="form-group" style="cursor:pointer">
+                            <div class="">
+                                <button type="submit" style="background-color: #56658f" class="form-control ">Sign In</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            
+        
+        </form>
+        </body>
+
+   
+
+

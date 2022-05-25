@@ -1,0 +1,207 @@
+﻿@model Clinic_Main.Models.Doctor
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<head>
+    <style>
+        #customers {
+            border-collapse: collapse;
+            width: 100%;
+            background-color: #A8BAC1;
+        }
+
+            #customers td, #customers th {
+                padding: 8px;
+            }
+
+            #customers th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #A8BAC1;
+                color: white;
+            }
+
+        body {
+            background-color: #EFF2F4;
+        }
+
+        .topnav {
+            background-color: #32ABD0;
+            overflow: hidden;
+        }
+            .topnav a {
+                float: left;
+                color: white;
+                text-align: left;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+            }
+
+            .topnav a:hover {
+                background-color: #A8BAC1;
+                color: black;
+            }
+
+            /* Add a color to the active/current link */
+            .topnav a.active {
+                background-color: #57C1BC;
+                color: white;
+            }
+    </style>
+</head>
+
+
+<div><center><h5 style="color:#A8BAC1"><img src="~/Images/Stone-Clinic-Logo.png" width="40" height="40" />&nbsp;Stone<i style="color:#58C1BC">Clinic</i></h5></center></div>
+<body>
+    <div>
+        <center>
+            <h6 style="color:black"><a asp-action="viewuser" asp-controller="Home" method="post"><img src="~/Images/user.png" width="20" height="20" /> Admin  </a> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a asp-action="Login" asp-controller="Home" method="post"><img src="~/Images/changes.png" width="20" height="20" />&nbsp;Switch user</a></h6>
+        </center>
+        @*<center><h1 class="m-0 text-secondary"><span class="text-dark">Stone</span>Clininc</h1></center>*@
+    </div>
+</body>
+<body style="background-color: #EFF2F4">
+    <div class="topnav">
+        <div style="text-align:left">
+            <a  asp-action="Home" asp-controller="Home" method="post">Home</a>
+            <a class="active" asp-action="AddDoctor" asp-controller="Home" method="post">Adddoctor</a>
+            <a asp-action="AddPatient" asp-controller="Home" method="post">AddPatient</a>
+            <a asp-action="DoctList" asp-controller="Home" method="post">Docter List</a>
+            <a asp-action="ScheduleAppoint" asp-controller="Home" method="post">Schedule Appointment</a>
+            <a asp-action="CancelAppoint" asp-controller="Home" method="post">Show Appointment</a>
+            <a asp-action="Login" asp-controller="Home" method="post">Log Out</a>
+        </div>
+    </div>
+</body>
+<br />
+<br />
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<h5 style="color:#DA0037"><b style="font-family:Arial, Helvetica, sans-serif ">Enter the Doctor Details :</b></h5>
+<br />
+<center>
+    <div class="dark">
+        <table id="customers">
+            @using (Html.BeginForm("AddDoctorList", "Home", FormMethod.Post))
+            {
+                <tr>
+                    <th>
+                        @Html.DisplayName("First Name")
+                    </th>
+                    <td>
+                        @Html.TextBoxFor(modelItem => Model.FirstName, new { required = "required" })
+
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        @Html.DisplayName("Last Name")
+                    </th>
+                    <td>
+                        @Html.TextBoxFor(modelItem => Model.LastName, new { required = "required" })
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        @Html.DisplayName("Sex")
+                    </th>
+                    <td>
+                        <select name="Sex">
+                            <option value="Gender" selected disabled>Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        @Html.DisplayName("Spec")
+                    </th>
+                    <td>
+                        <select name="Specialization">
+                            <option value="General" selected disabled>General</option>
+                            <option value="Internal Medicine">Internal Medicine</option>
+                            <option value="Pediatrics">Pediatrics</option>
+                            <option value="Orthopedics">Orthopedics</option>
+                            <option value="Ophthalmology">Ophthalmology</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        @Html.DisplayName("VisitingTime")
+                    </th>
+                    <td>
+                        <select name="VistingHours">
+                            <option value="Visting Hours" selected disabled>Visiting Hours</option>
+                            <option value="10.00 AM-11.00 AM">10.00 AM-11.00 AM</option>
+                            <option value="11.00 AM-12.00 PM">11.00 AM-1.00 PM</option>
+                            <option value="03.00 PM-04.00 PM">03.00 PM-04.00 PM</option>
+                            <option value="04.00 PM-05.00 PM">04.00 PM-05.00 PM</option>
+                        </select>
+                    </td>
+                </tr>
+                <tbody>
+                    <tr>
+                        <td>
+
+                            <input type="submit" value="Create" style="background-color: #32ABD0" />
+                        </td>
+                    </tr>
+                </tbody>
+            }
+        </table>
+    </div>
+</center>
+
+<footer>
+    <hr style="color:darkslategrey" />
+    <center>
+        <h1></h1>
+        <div class="soical-icons">
+
+            <a href="https://www.instagram.com/_n__14._/"><i class="fa fa-facebook-square  fa-6"><img src="~/Images/insta.png" width="30" height="30" /></i></a>
+            <a href="#"><i class="fa fa-google-plus-square fa-6"><img src="~/Images/fb.png" width="30" height="30" /></i></a>
+            <a href="#"><i class="fa fa-twitter-square fa-6"><img src="~/Images/tw.png" width="30" height="30" /></i></a>
+        </div>
+    </center>
+    <br />
+    <div style="background-color:black" class="gap">
+        <center><h6 style="color:whitesmoke">&copy;Copyright 2022.All Rights Reserved &nbsp; &nbsp;|&nbsp;&nbsp;<span style="color:red">Stone Clinic</span></h6></center>
+    </div>
+</footer>
+@*<div class="row">
+                <div class="col-md-4">
+                    <form asp-action="AddDoctorList" asp-controller="Home" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="FirstName" class="control-label"></label>
+                            <input asp-for="FirstName" class="form-control" />
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="LastName" class="control-label"></label>
+                            <input asp-for="LastName" class="form-control" />
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Sex" class="control-label"></label>
+                            <input asp-for="Sex" class="form-control" />
+                            <span asp-validation-for="Sex" class="text-danger"></span>
+    <a href="D:\OFFICE\Project\ex1\Clinic1\Clinic1\Views\Home\AddDoctor.cshtml">D:\OFFICE\Project\ex1\Clinic1\Clinic1\Views\Home\AddDoctor.cshtml</a>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Specialization" class="control-label"></label>
+                            <input asp-for="Specialization" class="form-control" />
+                            <span asp-validation-for="Specialization" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Create" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
+            </div>*@

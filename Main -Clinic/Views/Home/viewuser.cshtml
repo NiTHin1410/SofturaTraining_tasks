@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Clinic_Main.Models.Login>
+<br />
+<head>
+    <style>
+        #customers {
+            border-collapse: collapse;
+            width: 100%;
+            background-color: #A8BAC1;
+        }
+
+            #customers td, #customers th {
+                padding: 8px;
+            }
+
+            #customers th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #A8BAC1;
+                color: white;
+            }
+
+        body {
+            background-color: #EFF2F4;
+        }
+
+        .topnav {
+            background-color: #32ABD0;
+            overflow: hidden;
+        }
+
+            .topnav a:hover {
+                background-color: #A8BAC1;
+                color: black;
+            }
+
+            /* Add a color to the active/current link */
+            .topnav a.active {
+                background-color: #57C1BC;
+                color: white;
+            }
+    </style>
+</head>
+<br />
+<br />
+<br />
+<br />
+<table id="customers">
+    <tr>
+        <th>@Html.DisplayName("UserName :")</th>
+        <th>@Html.DisplayName("FirstName")</th>
+        <th>@Html.DisplayName("LastName")</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelitem => item.UserName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelitem => item.FirstName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelitem => item.LastName)
+    </td>
+    <td>
+        <a asp-action="Home" asp-controller="Home" style="background-color :#57C1BC">Back To Home</a>
+    </td>
+</tr>
+    }
+</table>
+

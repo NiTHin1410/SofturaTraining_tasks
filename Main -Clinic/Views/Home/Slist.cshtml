@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Clinic_Main.Models.Doctor>
+
+
+<div>
+    <table id="customers">
+        <tr>
+
+            <th>@Html.DisplayName("patientID")</th>
+            <th>@Html.DisplayName("Specializations")</th>
+            <th>@Html.DisplayName("DoctorName")</th>
+            <th>@Html.DisplayName("VisitDate")</th>
+            <th>@Html.DisplayName("AppointmentTime")</th>
+        </tr>
+</div>
+<div class="alert-light">
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelitem => item.DoctorId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelitem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelitem => item.Specialization)
+            </td>
+            <td>
+                @Html.TextBoxFor(modelitem => item.VistingHours)
+            </td>
+            @*<td>
+
+                @Html.TextBoxFor(modelitem => item.VisitDate)
+            </td>
+            <td>
+                @Html.TextBoxFor(modelitem => item.AppointmenTime)
+            </td>*@
+            <!--<td >-->
+            @*@using (Html.BeginForm("Deleting", "Home", FormMethod.Post))*@
+            <!--{
+
+                    <input type="submit" value="Cancel Appointment"  asp-route-id="@item.DoctorId" style="background-color: #91a5b7"/>
+                }
+            </td>-->
+            <td>
+                <a asp-action="Slist" asp-controller="Home" asp-route-id="@item.DoctorId" style="background-color: #32ABD0">Cancel Appointment</a>
+            </td>
+        </tr>
+    }
+    </table>

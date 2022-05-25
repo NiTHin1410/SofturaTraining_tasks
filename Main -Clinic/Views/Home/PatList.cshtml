@@ -1,0 +1,120 @@
+﻿@model IEnumerable<Clinic_Main.Models.Patient>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<head>
+    <link href="~/css/site.css" rel="stylesheet" />
+</head>
+<style>
+    #customers {
+        border-collapse: collapse;
+        width: 100%;
+        background-color: #A8BAC1;
+    }
+
+        #customers td, #customers th {
+            padding: 8px;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #A8BAC1;
+            color: white;
+        }
+
+    body {
+        background-color: #EFF2F4;
+    }
+
+    .topnav {
+        background-color: #32ABD0;
+        overflow: hidden;
+    }
+
+        .topnav a {
+            float: left;
+            color: white;
+            text-align: left;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+            .topnav a:hover {
+                background-color: #A8BAC1;
+                color: black;
+            }
+
+            /* Add a color to the active/current link */
+            .topnav a.active {
+                background-color: #57C1BC;
+                color: white;
+            }
+</style>
+
+<div><center><h5 style="color:#A8BAC1"><img src="~/Images/Stone-Clinic-Logo.png" width="40" height="40" />&nbsp;Stone<i style="color:#58C1BC">Clinic</i></h5></center></div>
+<body>
+    <div>
+        <center>
+            <h6 style="color:black"><a asp-action="viewuser" asp-controller="Home" method="post"><img src="~/Images/user.png" width="20" height="20" /> Admin  </a> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a asp-action="Login" asp-controller="Home" method="post"><img src="~/Images/changes.png" width="20" height="20" />&nbsp;Switch user</a></h6>
+        </center>
+        @*<center><h1 class="m-0 text-secondary"><span class="text-dark">Stone</span>Clininc</h1></center>*@
+    </div>
+</body>
+<body style="background-color: #EFF2F4">
+    <div class="topnav">
+        <div style="text-align:left">
+            <a class="active" asp-action="Home" asp-controller="Home" method="post">Home</a>
+            <a asp-action="AddDoctor" asp-controller="Home" method="post">Adddoctor</a>
+            <a asp-action="AddPatient" asp-controller="Home" method="post">AddPatient</a>
+            <a asp-action="DoctList" asp-controller="Home" method="post">Docter List</a>
+            <a asp-action="ScheduleAppoint" asp-controller="Home" method="post">Schedule Appoint</a>
+            <a asp-action="CancelAppoint" asp-controller="Home" method="post">Cancel Appoint</a>
+            <a asp-action="Login" asp-controller="Home" method="post">Log Out</a>
+        </div>
+    </div>
+</body>
+<br />
+<br />
+<table id="customers">
+    <tr>
+        <th>@Html.DisplayName("PatientID")</th>
+        <th>@Html.DisplayName("FirstName")</th>
+        <th>@Html.DisplayName("LastName")</th>
+        <th>@Html.DisplayName("Sex")</th>
+        <th>@Html.DisplayName("Age")</th>
+        <th>@Html.DisplayName("DoB")</th>
+    </tr>
+    <div class="alert-light">
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelitem => item.PatientId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelitem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelitem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelitem => item.Sex)
+        </td>
+        <td>
+            @Html.DisplayFor(modelitem => item.Age)
+        </td>
+        <td>
+            @Html.DisplayFor(modelitem => item.DOB)
+        </td>
+    </tr>
+    }
+        </div>
+    </table>
+<br />
+<center><a asp-action="Home" asp-controller="Home"  formmethod="post" style="border:hidden;background-color:gray;color:white">Back To Home</a></center>
+ 

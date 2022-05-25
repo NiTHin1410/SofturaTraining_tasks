@@ -1,0 +1,234 @@
+﻿@model Clinic_Main.Models.Appointment
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<head>
+    <style>
+        #customers {
+            border-collapse: collapse;
+            width: 100%;
+            background-color: #A8BAC1;
+        }
+
+            #customers td, #customers th {
+                padding: 8px;
+            }
+
+            #customers th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #A8BAC1;
+                color: white;
+            }
+
+        body {
+            background-color: #EFF2F4;
+        }
+
+        .topnav {
+            background-color: #32ABD0;
+            overflow: hidden;
+        }
+
+            .topnav a {
+                float: left;
+                color: white;
+                text-align: left;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+            }
+
+                .topnav a:hover {
+                    background-color: #A8BAC1;
+                    color: black;
+                }
+
+                .topnav a.active {
+                    background-color: #57C1BC;
+                    color: white;
+                }
+    </style>
+</head>
+<div><center><h5 style="color:#A8BAC1"><img src="~/Images/Stone-Clinic-Logo.png" width="40" height="40" />&nbsp;Stone<i style="color:#58C1BC">Clinic</i></h5></center></div>
+<body>
+    <div>
+        <center>
+            <h6 style="color:black"><a asp-action="viewuser" asp-controller="Home" method="post"><img src="~/Images/user.png" width="20" height="20" /> Admin  </a> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a asp-action="Login" asp-controller="Home" method="post"><img src="~/Images/changes.png" width="20" height="20" />&nbsp;Switch user</a></h6>
+        </center>
+    </div>
+</body>
+<body style="background-color: #EFF2F4">
+    <div class="topnav">
+        <div style="text-align:left">
+            <a asp-action="Home" asp-controller="Home" method="post">Home</a>
+            <a asp-action="AddDoctor" asp-controller="Home" method="post">Adddoctor</a>
+            <a asp-action="AddPatient" asp-controller="Home" method="post">AddPatient</a>
+            <a asp-action="DoctList" asp-controller="Home" method="post">Docter List</a>
+            <a class="active" asp-action="ScheduleAppoint" asp-controller="Home" method="post">Schedule Appointment</a>
+            <a asp-action="CancelAppoint" asp-controller="Home" method="post">Cancel Appointment</a>
+            <a asp-action="Login" asp-controller="Home" method="post">Log Out</a>
+        </div>
+    </div>
+</body>
+<br />
+<br />
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<h5 style="color:#DA0037"><b style="font-family:Arial, Helvetica, sans-serif ">Enter the Schedule Details :</b></h5>
+<br />
+<center>
+    @*<div>
+            <table id="customers">
+                <tr>
+                    <th>@Html.DisplayName("AppointID")</th>
+                    <th>@Html.DisplayName("patientID")</th>
+                    <th>@Html.DisplayName("Specializations")</th>
+                    <th>@Html.DisplayName("DoctorName")</th>
+                    <th>@Html.DisplayName("VisitDate")</th>
+                    <th>@Html.DisplayName("AppointmentTime")</th>
+                </tr>
+        </div>
+        <div class="alert-light">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelitem => item.DoctorId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelitem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelitem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelitem => item.Specialization)
+                    </td>
+                    <td>
+
+                        @Html.DisplayFor(modelitem => item.VistingHours)
+                    </td>
+                </tr>
+            }
+        </div>*@
+
+    <div>
+
+        <table id="customers">
+            @using (Html.BeginForm("Appoint", "Home", FormMethod.Post))
+            {
+                @Html.Raw(TempData["msg"]);
+                <tr>
+                    <th>
+                        @Html.DisplayName("PatientId")
+                    </th>
+                    <td>
+
+                        @Html.TextBoxFor(modelItem => Model.PatientID, new { required = "required" })
+                        <center>@ViewBag.alert</center>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        @Html.DisplayName("PatientName")
+                    </th>
+                    <td>
+
+                        @Html.TextBoxFor(modelItem => Model.PatientName, new { required = "required" })
+                        <center>@ViewBag.alert</center>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        @Html.DisplayName("Specialization")
+                    </th>
+                    @*<td>@Html.DropDownList("Specialization", new SelectList(ViewBag.data, "Specialization"))</td>*@
+                    <td>
+                        <select name="Specialization">
+                            <option value="Specs" selected disabled>Specs</option>
+                            <option value="General">General</option>
+                            <option value="Internal Medicine">Internal Medicine</option>
+                            <option value="Pediatrics">Pediatrics</option>
+                            <option value="Orthopedics">Orthopedics</option>
+                            <option value="Ophthalmology">Ophthalmology</option>
+                        </select>
+                    </td>
+                    @*<td>@Html.EditorFor(modelItem=>Model.Specialization)</td>*@
+                </tr>
+                <tr>
+                    <th>
+                        @Html.DisplayName("DoctorList")
+                    </th>
+                    <td>
+                        <select name="DoctorList" required>
+                            <option value="Docto Names" selected disabled>Doctor Names</option>
+                            <option value="Deepak">Deepak</option>
+                            <option value="Kaviyarasan">Kaviyarasan</option>
+                            <option value="Mohan Raj">Mohan Raj</option>
+                            <option value="Rukesh">Rukesh</option>
+                            <option value="Shreedhar">Shreedhar</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        @Html.DisplayName("Visit Date")
+                    </th>
+                    <td>
+                        &nbsp;&nbsp;<input asp-for="VisitDate" asp:dr asp-action="shbydate" asp-controller="Home" type="date" required />
+                        <span asp-validation-for="VisitDate" class="text-danger"></span>
+                        @*@Html.TextBoxFor(modelItem => Model.VisitDate)*@
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        @Html.DisplayName("Appointment time")
+                    </th>
+                    @*<td>
+                    @Html.TextBoxFor(modelItem => Model.AppointmenTime)
+                </td>*@
+                    <td>
+                        <select name="AppointmenTime">
+                            <option value="Visting Hours" selected disabled>Visiting Hours</option>
+                            <option value="10.00 AM-11.00 AM">10.00 AM-11.00 AM</option>
+                            <option value="11.00 AM-12.00 PM">11.00 AM-1.00 PM</option>
+                            <option value="03.00 PM-04.00 PM">03.00 PM-04.00 PM</option>
+                            <option value="04.00 PM-05.00 PM">04.00 PM-05.00 PM</option>
+                        </select>
+                    </td>
+                </tr>
+                <tbody>
+                    <tr>
+                        <td>
+
+                            <input type="submit" value="Create" style="background-color: #32ABD0" />
+                        </td>
+                    </tr>
+                </tbody>
+            }
+        </table>
+    </div>
+</center>
+<script>
+    var today = new Date().toISOString().split('T')[0];
+    document.getElementsByName("VisitDate")[0].setAttribute('min', today);
+</script>
+<footer>
+    <hr style="color:darkslategrey" />
+    <center>
+        <h1></h1>
+        <div class="soical-icons">
+
+            <a href="https://www.instagram.com/_n__14._/"><i class="fa fa-facebook-square  fa-6"><img src="~/Images/insta.png" width="30" height="30" /></i></a>
+            <a href="#"><i class="fa fa-google-plus-square fa-6"><img src="~/Images/fb.png" width="30" height="30" /></i></a>
+            <a href="#"><i class="fa fa-twitter-square fa-6"><img src="~/Images/tw.png" width="30" height="30" /></i></a>
+        </div>
+    </center>
+    <br />
+    <div style="background-color:black" class="gap">
+        <center><h6 style="color:whitesmoke">&copy;Copyright 2022.All Rights Reserved &nbsp; &nbsp;|&nbsp;&nbsp;<span style="color:red">Stone Clinic</span></h6></center>
+    </div>
+</footer>
